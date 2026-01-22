@@ -69,23 +69,11 @@ backToTop.addEventListener('click', () => {
 const contactForm = document.getElementById('contactForm');
 
 contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(contactForm);
-    const data = {};
-    formData.forEach((value, key) => {
-        data[key] = value;
-    });
-    
-    // Here you would normally send the data to a server
-    console.log('Form data:', data);
-    
-    // Show success message
-    alert('Thank you for your message! I will get back to you soon.');
-    
-    // Reset form
-    contactForm.reset();
+    // Let FormSpree handle the submission - don't prevent default
+    // Show a temporary message while submitting
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
 });
 
 // Intersection Observer for animations
