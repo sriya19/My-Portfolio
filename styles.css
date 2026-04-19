@@ -977,6 +977,13 @@ body {
     position: relative;
 }
 
+/* Certifications Section */
+.certifications {
+    padding: 100px 20px;
+    background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+    position: relative;
+}
+
 .education-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
