@@ -11,8 +11,9 @@
     --bot-line: rgba(0, 212, 255, 0.25);
 }
 
-/* Floating launcher */
+/* Floating launcher (HIDDEN - using talking avatar instead) */
 .ai-bot-launcher {
+    display: none !important;
     position: fixed;
     bottom: 28px;
     right: 28px;
@@ -101,8 +102,9 @@
     50% { transform: translateY(-5px); }
 }
 
-/* Chat window */
+/* Chat window (HIDDEN - using talking avatar instead) */
 .ai-bot-window {
+    display: none !important;
     position: fixed;
     bottom: 28px;
     right: 28px;

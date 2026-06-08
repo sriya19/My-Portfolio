@@ -7,6 +7,7 @@
     <meta name="description" content="Sriya Pothula - AI Engineer specializing in RAG pipelines, LLMs, and scalable AI systems">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="talking-avatar.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -450,8 +451,70 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Talking Avatar Launcher -->
+    <div class="avatar-launcher">
+        <div class="avatar-launcher-icon">
+            <img src="chatbot-avatar.png" alt="Talk to Sriya AI">
+        </div>
+        <span>Talk to Sriya AI</span>
+    </div>
+
+    <!-- Talking Avatar Interface (Full Screen) -->
+    <div class="talking-avatar-container">
+        <div class="avatar-split">
+            <!-- LEFT: Chat Panel -->
+            <div class="avatar-chat-panel">
+                <div class="avatar-chat-header">
+                    <h2>Chat with Sriya AI</h2>
+                    <p>Ask me anything about Sriya's work, skills, and projects</p>
+                </div>
+
+                <div class="avatar-messages-area"></div>
+
+                <div class="avatar-suggestions"></div>
+
+                <form class="avatar-input-area">
+                    <input type="text" placeholder="Type your question..." autocomplete="off">
+                    <button type="submit" class="avatar-send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- RIGHT: Avatar Video Panel -->
+            <div class="avatar-video-panel">
+                <div class="avatar-bg-particles"></div>
+
+                <button class="avatar-close-btn" title="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <div class="avatar-status">
+                    <span class="avatar-status-dot"></span>
+                    <span class="avatar-status-text">AI Online</span>
+                </div>
+
+                <div class="avatar-display">
+                    <div class="avatar-glow-ring"></div>
+                    <div class="avatar-image-frame">
+                        <img src="chatbot-avatar.png" alt="Sriya AI">
+                    </div>
+                    <div class="avatar-soundwave">
+                        <div class="avatar-soundwave-bar"></div>
+                        <div class="avatar-soundwave-bar"></div>
+                        <div class="avatar-soundwave-bar"></div>
+                        <div class="avatar-soundwave-bar"></div>
+                        <div class="avatar-soundwave-bar"></div>
+                        <div class="avatar-soundwave-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
     <script src="chatbot.js"></script>
+    <script src="talking-avatar.js"></script>
 </body>
 </html>
 <!-- Updated Wed Apr  1 11:50:00 UTC 2026 -->
