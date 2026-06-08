@@ -99,17 +99,104 @@
         {
             keywords: ['thank', 'thanks', 'appreciate'],
             answer: "You're very welcome! Feel free to ask anything else about Sriya, or reach out to her directly at sriyasriya569@gmail.com."
+        },
+
+        /* ============================================================
+           FUN / PERSONALITY  — the playful side of the bot
+           ============================================================ */
+        {
+            keywords: ['joke', 'funny', 'make me laugh', 'humor', 'humour'],
+            answer: [
+                "Why did the data scientist break up with the neural network? There was just no connection... well, except for the fully-connected layer. 😄",
+                "Why do Python programmers prefer dark mode? Because light attracts bugs! 🐛",
+                "I told my model a joke about overfitting. It only laughed at that exact joke and nothing else. 😂",
+                "How does Sriya organize a party? She plans it in SQL — then JOINs everyone together! 🎉",
+                "Why was the RAG pipeline so calm? Because it always had its context together. 🧘",
+                "I asked the LLM to tell me a joke. It hallucinated three punchlines and cited a paper that doesn't exist. 📚😅",
+                "There are 10 types of people in the world: those who understand binary, and those who don't. 🤓"
+            ]
+        },
+        {
+            keywords: ['fun fact', 'interesting', 'tell me something', 'random', 'surprise me'],
+            answer: [
+                "Fun fact: Sriya's automation work at Infosys saved teams ~30 hours every single week — that's like gifting people an extra 4-day work-month every year! ⏱️",
+                "Fun fact: One of Sriya's projects searches across 14,000+ dataset chunks in under a second. Faster than deciding what to watch on Netflix! 🍿",
+                "Fun fact: Sriya's dashboards helped drive a 33% revenue jump. Numbers AND results — the dream combo. 📈",
+                "Fun fact: She speaks both 'human' and 'SQL' fluently — and is conversational in LLM. 🤖"
+            ]
+        },
+        {
+            keywords: ['are you real', 'are you a robot', 'are you ai', 'are you sriya', 'bot', 'human', 'who made you'],
+            answer: "Great question! I'm Sriya's AI twin — a friendly bot she built to chat with visitors like you. I'm not the real Sriya, but I know her work, her story, and I've got her sense of humor. For the real deal, reach out at sriyasriya569@gmail.com! 🤖💙"
+        },
+        {
+            keywords: ['your name', 'what are you called', 'who are you bot'],
+            answer: "I'm Sriya AI — think of me as Sriya's digital sidekick. I'm here to answer anything about her, crack a joke, or point you to her work. 😊"
+        },
+        {
+            keywords: ['how are you', 'how do you do', 'whats up', "what's up", 'how is it going'],
+            answer: "I'm running at 100% uptime and feeling chatty! 😄 Thanks for asking. How can I help you get to know Sriya?"
+        },
+        {
+            keywords: ['why ai', 'why data', 'passion', 'motivat', 'inspire', 'love about', 'why did you'],
+            answer: "Sriya loves the moment messy, raw data turns into something that actually helps people — whether that's a clinical QA system answering doctors' questions or a dashboard that changes a business decision. That 'aha!' moment is what keeps her building. ✨"
+        },
+        {
+            keywords: ['strength', 'best at', 'superpower', 'good at'],
+            answer: "Sriya's superpower is being a translator between worlds — she speaks fluent 'engineer' AND fluent 'business.' She can build a RAG pipeline in the morning and explain its ROI to executives in the afternoon. 🦸‍♀️"
+        },
+        {
+            keywords: ['advice', 'tip', 'getting started', 'learn ai', 'break into', 'how to become'],
+            answer: "Sriya's advice for breaking into AI: build real projects, not just tutorials. Pick a problem you care about, ship something end-to-end, and don't be afraid of the messy data parts — that's where the real learning happens. 🚀"
+        },
+
+        /* ============================================================
+           PERSONAL  — TODO: Sriya, send me your real answers and
+           I'll swap these in! These are friendly placeholders.
+           ============================================================ */
+        {
+            keywords: ['hobby', 'hobbies', 'free time', 'fun', 'outside work', 'do for fun', 'spare time', 'weekend'],
+            answer: "Outside of building AI, Sriya loves [HOBBIES — e.g. exploring new coffee spots, hiking around Virginia, sketching, and getting lost in a good sci-fi series]. Want to know more? Ask away! ☕ (Sriya — send me your real hobbies and I'll update this!)"
+        },
+        {
+            keywords: ['music', 'song', 'listen', 'artist', 'band', 'playlist'],
+            answer: "Sriya's coding playlist is fuel for deep-focus sessions — [MUSIC — e.g. lo-fi beats, indie, and the occasional Telugu/Bollywood throwback]. 🎧"
+        },
+        {
+            keywords: ['food', 'eat', 'cuisine', 'cook', 'favorite dish', 'restaurant'],
+            answer: "Sriya is a fan of [FOOD — e.g. spicy South Indian food and trying new cafes around the D.C. area]. Debugging always goes better with good snacks! 🍜"
+        },
+        {
+            keywords: ['movie', 'show', 'watch', 'series', 'netflix', 'film', 'anime'],
+            answer: "When she's unwinding, Sriya enjoys [MOVIES/SHOWS — e.g. sci-fi films, anime, and a cozy Studio Ghibli rewatch]. 🎬"
+        },
+        {
+            keywords: ['book', 'read', 'reading'],
+            answer: "Sriya enjoys [BOOKS — e.g. tech and AI reads plus the occasional thriller to switch off the analytical brain]. 📚"
+        },
+        {
+            keywords: ['travel', 'trip', 'visit', 'country', 'places'],
+            answer: "Sriya loves to travel and explore new places — [TRAVEL — share your favorite destinations and I'll add them here!]. ✈️"
+        },
+        {
+            keywords: ['language', 'speak', 'languages spoken'],
+            answer: "Sriya speaks [LANGUAGES — e.g. English, Telugu, and Hindi] — plus Python and SQL, if those count! 😉"
+        },
+        {
+            keywords: ['fun fact about you', 'something personal', 'secret', 'quirky'],
+            answer: "Here's a little secret: [PERSONAL FUN FACT — give me a quirky detail about you and I'll share it!]. 🌟"
         }
     ];
 
-    const FALLBACK = "Great question! I can tell you about Sriya's experience, skills, projects, education, certifications, or how to contact her. Try asking something like \"What are her AI skills?\" or \"Tell me about her projects.\"";
+    const FALLBACK = "Hmm, I don't have a great answer for that one yet! 😅 But I'm full of info on Sriya's projects, skills, and experience — or I can tell you a joke, share a fun fact, or chat about her hobbies. What sounds good?";
 
     const SUGGESTIONS = [
         'Who is Sriya?',
-        'What roles is she looking for?',
+        'Tell me a joke 😄',
         'Her AI & Gen AI skills',
         'Tell me about her projects',
-        'Her experience',
+        'What are her hobbies?',
+        'A fun fact',
         'How can I contact her?'
     ];
 
@@ -133,7 +220,18 @@
             }
         });
 
-        return best && bestScore > 0 ? best.answer : FALLBACK;
+        return best && bestScore > 0 ? resolve(best.answer) : FALLBACK;
+    }
+
+    // Answers can be a string, an array (pick one at random), or a function.
+    function resolve(answer) {
+        if (Array.isArray(answer)) {
+            return answer[Math.floor(Math.random() * answer.length)];
+        }
+        if (typeof answer === 'function') {
+            return answer();
+        }
+        return answer;
     }
 
     // ---- DOM build -----------------------------------------------------
