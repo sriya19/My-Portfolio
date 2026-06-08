@@ -283,11 +283,8 @@ if (backToTop) {
 const heroTitle = document.querySelector('.hero-title');
 if (heroTitle) {
     const phrases = [
-        'AI Engineer | Building Production-Grade AI Systems',
-        'Machine Learning Specialist | RAG Pipelines & LLMs',
-        'Data Engineer | Scalable Cloud Architectures',
-        'NLP Expert | Semantic Search & Embeddings',
-        'Full-Stack AI Developer | Python | PostgreSQL | AWS'
+        'Gen AI Engineer | RAG, LLMs & Semantic Search',
+        'Data Business Analyst | Power BI, Snowflake & SQL'
     ];
 
     let phraseIndex = 0;
