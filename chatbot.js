@@ -147,7 +147,7 @@
     const launcher = el('div', 'ai-bot-launcher');
     launcher.setAttribute('aria-label', "Chat with Sriya's AI");
     launcher.innerHTML =
-        '<img src="profile.jpg" alt="Sriya AI" class="ai-bot-avatar-img">' +
+        '<img src="chatbot-avatar.png" alt="Sriya AI" class="ai-bot-avatar-img">' +
         '<span class="ai-bot-pulse"></span>' +
         '<span class="ai-bot-launcher-label">Ask my AI about me</span>';
 
@@ -156,7 +156,7 @@
     windowEl.innerHTML =
         '<div class="ai-bot-header">' +
             '<div class="ai-bot-header-avatar" id="aiBotAvatar">' +
-                '<img src="profile.jpg" alt="Sriya AI">' +
+                '<img src="chatbot-avatar.png" alt="Sriya AI">' +
                 '<span class="ai-bot-status"></span>' +
             '</div>' +
             '<div class="ai-bot-header-info">' +
