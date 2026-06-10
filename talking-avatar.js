@@ -126,6 +126,7 @@
     }
 
     const avatarDisplay = document.querySelector('.avatar-display');
+    const avatarVideo = document.querySelector('.avatar-image-frame video');
 
     function speak(text) {
         if (!voiceEnabled || !('speechSynthesis' in window)) return;
@@ -137,12 +138,22 @@
         utter.pitch = 1.05;
         utter.onstart = function () {
             if (avatarDisplay) avatarDisplay.classList.add('talking');
+            if (avatarVideo) {
+                avatarVideo.playbackRate = 1.0; // Normal speed when talking
+                avatarVideo.play();
+            }
         };
         utter.onend = function () {
             if (avatarDisplay) avatarDisplay.classList.remove('talking');
+            if (avatarVideo) {
+                avatarVideo.playbackRate = 0.5; // Slow motion when idle
+            }
         };
         utter.onerror = function () {
             if (avatarDisplay) avatarDisplay.classList.remove('talking');
+            if (avatarVideo) {
+                avatarVideo.playbackRate = 0.5;
+            }
         };
         window.speechSynthesis.speak(utter);
     }
@@ -150,6 +161,9 @@
     function stopSpeaking() {
         if ('speechSynthesis' in window) window.speechSynthesis.cancel();
         if (avatarDisplay) avatarDisplay.classList.remove('talking');
+        if (avatarVideo) {
+            avatarVideo.playbackRate = 0.5; // Slow motion when stopped
+        }
     }
 
     // UI
@@ -251,4 +265,9 @@
             closeAvatar();
         }
     });
+
+    // Initialize video at slow playback when idle
+    if (avatarVideo) {
+        avatarVideo.playbackRate = 0.5;
+    }
 })();

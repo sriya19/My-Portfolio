@@ -312,7 +312,8 @@
     z-index: 3;
 }
 
-.avatar-image-frame img {
+.avatar-image-frame img,
+.avatar-image-frame video {
     width: 100%;
     height: 100%;
     object-fit: cover;
