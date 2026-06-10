@@ -436,8 +436,9 @@
     transform: scale(1.05);
 }
 
-/* Launcher button (to open the avatar) */
+/* Launcher button (HIDDEN - using hero button instead) */
 .avatar-launcher {
+    display: none !important;
     position: fixed;
     bottom: 32px;
     right: 32px;

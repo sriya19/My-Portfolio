@@ -253,6 +253,32 @@
     if (launcher) launcher.addEventListener('click', openAvatar);
     if (closeBtn) closeBtn.addEventListener('click', closeAvatar);
 
+    // Connect new hero button to open avatar
+    const heroTalkBtn = document.querySelector('.talk-to-ai-btn');
+    if (heroTalkBtn) {
+        heroTalkBtn.addEventListener('click', openAvatar);
+    }
+
+    // Hero video unmute button
+    const heroVideo = document.getElementById('heroVideo');
+    const unmuteBtn = document.getElementById('videoUnmuteBtn');
+
+    if (heroVideo && unmuteBtn) {
+        unmuteBtn.addEventListener('click', function() {
+            if (heroVideo.muted) {
+                heroVideo.muted = false;
+                unmuteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                unmuteBtn.classList.add('unmuted');
+                unmuteBtn.title = 'Click to mute';
+            } else {
+                heroVideo.muted = true;
+                unmuteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                unmuteBtn.classList.remove('unmuted');
+                unmuteBtn.title = 'Click to hear audio';
+            }
+        });
+    }
+
     if (formEl) {
         formEl.addEventListener('submit', function (e) {
             e.preventDefault();
