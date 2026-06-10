@@ -324,6 +324,17 @@ body {
     height: 300px;
 }
 
+/* Blending overlay for video - fades edges into background */
+.profile-image-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, transparent 40%, rgba(10, 14, 39, 0.3) 70%, rgba(10, 14, 39, 0.8) 100%);
+    pointer-events: none;
+    z-index: 3;
+}
+
 .profile-image {
     width: 100%;
     height: 100%;

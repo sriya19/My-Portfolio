@@ -51,7 +51,15 @@
         <div class="hero-background"></div>
         <div class="hero-content">
             <div class="profile-image-container">
-                <img src="profile.jpg" alt="Sriya Pothula" class="profile-image">
+                <video src="sriya-avatar.mp4"
+                       autoplay
+                       loop
+                       muted
+                       playsinline
+                       poster="profile.jpg"
+                       class="profile-image"
+                       alt="Sriya Pothula">
+                </video>
                 <div class="profile-ring"></div>
             </div>
             <div class="hero-text">
@@ -462,26 +470,7 @@
     <!-- Talking Avatar Interface (Full Screen) -->
     <div class="talking-avatar-container">
         <div class="avatar-split">
-            <!-- LEFT: Chat Panel -->
-            <div class="avatar-chat-panel">
-                <div class="avatar-chat-header">
-                    <h2>Chat with Sriya AI</h2>
-                    <p>Ask me anything about Sriya's work, skills, and projects</p>
-                </div>
-
-                <div class="avatar-messages-area"></div>
-
-                <div class="avatar-suggestions"></div>
-
-                <form class="avatar-input-area">
-                    <input type="text" placeholder="Type your question..." autocomplete="off">
-                    <button type="submit" class="avatar-send-btn">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
-            </div>
-
-            <!-- RIGHT: Avatar Video Panel -->
+            <!-- LEFT: Avatar Video Panel -->
             <div class="avatar-video-panel">
                 <div class="avatar-bg-particles"></div>
 
@@ -515,6 +504,25 @@
                         <div class="avatar-soundwave-bar"></div>
                     </div>
                 </div>
+            </div>
+
+            <!-- RIGHT: Chat Panel -->
+            <div class="avatar-chat-panel">
+                <div class="avatar-chat-header">
+                    <h2>Chat with Sriya AI</h2>
+                    <p>Ask me anything about Sriya's work, skills, and projects</p>
+                </div>
+
+                <div class="avatar-messages-area"></div>
+
+                <div class="avatar-suggestions"></div>
+
+                <form class="avatar-input-area">
+                    <input type="text" placeholder="Type your question..." autocomplete="off">
+                    <button type="submit" class="avatar-send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </div>
