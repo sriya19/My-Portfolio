@@ -218,19 +218,24 @@ if (heroVideo) {
 
     function playWithSound() {
         heroVideo.muted = false;
+        heroVideo.loop = false;      // play through once with sound, then stop
         heroVideo.volume = 1.0;
         heroVideo.currentTime = 0;   // restart so the full greeting is heard
         heroVideo.play().catch(function () { /* ignored */ });
         if (videoSoundBtn) videoSoundBtn.classList.add('hidden');
     }
 
-    // The big visible button
+    // The big visible button — stays until the visitor clicks it
     if (videoSoundBtn) {
         videoSoundBtn.addEventListener('click', playWithSound);
     }
 
-    // Hide the button automatically once the video finishes playing
+    // While muted, keep the avatar looping so she stays animated and the
+    // "tap to hear me" button remains relevant. Once the visitor unmutes,
+    // the video plays through once and stops.
+    heroVideo.loop = true;
     heroVideo.addEventListener('ended', function () {
+        // Only fires after unmuting (loop is turned off in playWithSound)
         if (videoSoundBtn) videoSoundBtn.classList.add('hidden');
     });
 }
