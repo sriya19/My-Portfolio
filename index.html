@@ -3,16 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sriya Pothula - Portfolio</title>
+    <title>Sriya Pothula - AI Engineer Portfolio</title>
+    <meta name="description" content="Sriya Pothula - AI Engineer specializing in RAG pipelines, LLMs, and scalable AI systems">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="talking-avatar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-container">
+            <div class="loader-brain"></div>
+            <div class="loader-text">Initializing AI System...</div>
+        </div>
+    </div>
+
+    <!-- Background Canvases -->
+    <canvas id="matrixCanvas"></canvas>
+    <canvas id="particleCanvas"></canvas>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-brand">Sai Padma Sriya Pothula</div>
+            <div class="nav-brand">Sriya.AI</div>
             <button class="nav-toggle" id="navToggle">
                 <span></span>
                 <span></span>
@@ -25,6 +39,7 @@
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
@@ -34,19 +49,29 @@
     <section id="home" class="hero">
         <div class="hero-background"></div>
         <div class="hero-content">
-            <div class="profile-image-container">
-                <img src="profile.jpg" alt="SriyaPothula" class="profile-image">
-                <div class="profile-ring"></div>
+            <div class="hero-left">
+                <div class="hero-video-wrapper">
+                    <video src="sriya-avatar.mp4"
+                           autoplay
+                           loop
+                           playsinline
+                           poster="profile.jpg"
+                           class="hero-video"
+                           id="heroVideo"
+                           alt="Sriya Pothula">
+                    </video>
+                </div>
             </div>
+
             <div class="hero-text">
                 <p class="greeting">Hello, I'm</p>
-                <h1 class="hero-name">Sai Padma Sriya Pothula</h1>
-                <p class="hero-title">Data Engineer| Data Analyst | Machine Learning Enthusiast | AI Innovation Specialist</p>
+                <h1 class="hero-name" data-text="Sriya Pothula">Sriya Pothula</h1>
+                <p class="hero-title">Gen AI Engineer | Data Business Analyst</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">
                         <i class="fas fa-envelope"></i> Contact Me
                     </a>
-                    <a href="Sriya Pothula AI Engineer Resume.pdf" download class="btn btn-secondary">
+                    <a href="Sriya_Pothula_Resume.pdf" download class="btn btn-secondary">
                         <i class="fas fa-download"></i> Download Resume
                     </a>
                 </div>
@@ -57,7 +82,21 @@
                     <a href="https://github.com/sriya19" target="_blank" class="social-link" aria-label="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
+                    <a href="mailto:sriyasriya569@gmail.com" class="social-link" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
+
+                <!-- Talk to Sriya AI Button (under social links) -->
+                <button class="talk-to-ai-btn">
+                    <div class="talk-btn-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="talk-btn-text">
+                        <span class="talk-btn-title">Talk to Sriya AI</span>
+                        <span class="talk-btn-subtitle">Ask me anything!</span>
+                    </div>
+                </button>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -98,34 +137,38 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-container" style="max-width: 900px; margin: 0 auto;">
-                <div class="skill-tags" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; padding: 20px 0;">
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">Python</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">SQL</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">R</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">Streamlit</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">NLP</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">RAG</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">LLMs</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #333; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">OpenAI API</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #333; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">XGBoost</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">FAISS</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">SAP</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">AWS</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">Git</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">Databricks</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">ServiceNow</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">Power BI</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #333; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">Snowflake</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #333; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">MinIO</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">PostgreSQL</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">Semantic Search</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">PySpark</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">ETL Pipelines</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">Embedding</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">SAS</span>
-                    <span class="skill-tag" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">JIRA</span>
+            <h2 class="section-title">Technical Arsenal</h2>
+            <div class="skills-container">
+                <div class="skill-tags" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 20px 0;">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">Streamlit</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">RAG</span>
+                    <span class="skill-tag">LLMs</span>
+                    <span class="skill-tag">OpenAI API</span>
+                    <span class="skill-tag">XGBoost</span>
+                    <span class="skill-tag">FAISS</span>
+                    <span class="skill-tag">SBERT</span>
+                    <span class="skill-tag">Semantic Search</span>
+                    <span class="skill-tag">Embeddings</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Databricks</span>
+                    <span class="skill-tag">Snowflake</span>
+                    <span class="skill-tag">PySpark</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MinIO</span>
+                    <span class="skill-tag">ETL Pipelines</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">SAP</span>
+                    <span class="skill-tag">ServiceNow</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">JIRA</span>
+                    <span class="skill-tag">SAS</span>
+                    <span class="skill-tag">ParaView</span>
+                    <span class="skill-tag">QGIS</span>
                 </div>
             </div>
         </div>
@@ -137,16 +180,28 @@
             <h2 class="section-title">Work Experience</h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-date">August 2025 - December 2025</div>
+                    <div class="timeline-date">April 2026 - Present</div>
                     <div class="timeline-content">
-                        <h3>AI Engineer Intern (6 Month Project)</h3>
-                        <h4>ALFA8 LLC | Fairfax, Virginia</h4>
-                        <p>Built production-grade AI platform for mental health data accessibility, engineering end-to-end RAG pipelines and semantic search systems.</p>
+                        <h3>Business Intelligence Analyst</h3>
+                        <h4>Top Marble & Granite LLC | Chantilly, Virginia</h4>
+                        <p>Leading SaaS development and analytics infrastructure, integrating Snowflake-backed systems with customer-facing platforms.</p>
                         <ul>
-                            <li>Built a full-stack AI platform using Python, PostgreSQL, MinIO, and Streamlit, enabling ingestion and querying of multi-source mental health datasets, improving data accessibility for non-technical users</li>
-                            <li>Engineered an end-to-end RAG pipeline (embeddings, vector search, LLMs) that delivered grounded, context-aware answers, increasing retrieval accuracy and usability of large-scale datasets</li>
-                            <li>Designed and implemented semantic + keyword search systems using pgvector and embedding models, improving dataset relevance ranking and user query performance</li>
-                            <li>Developed scalable data ingestion and indexing pipelines, reducing manual dataset processing and enabling real-time querying and visualization workflows</li>
+                            <li>Leading the development of Stone Dash (SaaS), integrating Snowflake-backed analytics with a customer-facing inventory platform to bridge operational data with frontline systems</li>
+                            <li>Designed and built interactive Power BI and Snowflake dashboards delivering real-time visibility into sales, inventory, and demand forecasting, contributing to a 33% revenue increase</li>
+                            <li>Architected dimensional data models and SQL ETL pipelines feeding executive dashboards, reducing manual reporting time and improving data accuracy across business units</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">April 2026 - Present</div>
+                    <div class="timeline-content">
+                        <h3>AI Trainer</h3>
+                        <h4>Handshake AI | Remote</h4>
+                        <p>Building and optimizing data pipelines and retrieval systems to support large-scale AI applications.</p>
+                        <ul>
+                            <li>Built and optimized data preprocessing and transformation pipelines for structured and unstructured datasets, improving downstream model performance and reliability</li>
+                            <li>Engineered scalable retrieval pipelines using vector databases and embeddings, supporting large-scale use cases</li>
+                            <li>Developed Python and SQL automation workflows, streamlining internal research and operational processes</li>
                         </ul>
                     </div>
                 </div>
@@ -154,26 +209,24 @@
                     <div class="timeline-date">August 2025 - December 2025</div>
                     <div class="timeline-content">
                         <h3>Business Intelligence Intern</h3>
-                        <h4>Top Marble & Granite LLC | Fairfax, Virginia</h4>
-                        <p>Built interactive dashboards and data models to drive business decisions, contributing to significant revenue growth.</p>
+                        <h4>Top Marble & Granite LLC | Chantilly, Virginia</h4>
+                        <p>Designed data models and integrated AI-powered features to enhance operational efficiency.</p>
                         <ul>
-                            <li>Built interactive dashboards using Power BI and Snowflake, enabling real-time tracking of sales, inventory, and demand, contributing to a 33% increase in revenue</li>
-                            <li>Designed optimized SQL data models and ETL workflows, improving reporting efficiency and reducing manual data aggregation efforts</li>
-                            <li>Delivered actionable insights through data analysis and visualization, directly influencing pricing, inventory planning, and marketing strategies</li>
+                            <li>Designed optimized SQL data models and ETL workflows, improving reporting efficiency and reducing manual aggregation effort</li>
+                            <li>Integrated a generative-AI imagery feature into the website, dynamically producing slab visualizations from product metadata and eliminating dependence on manually captured photography</li>
                         </ul>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-date">March 2021 - December 2023</div>
                     <div class="timeline-content">
-                        <h3>Senior SAP Data Engineer</h3>
-                        <h4>Infosys | Remote</h4>
-                        <p>Developed automation workflows and supported large-scale production systems for global enterprise clients.</p>
+                        <h3>Senior Data Engineer, SAP Platform</h3>
+                        <h4>Infosys | SEZ</h4>
+                        <p>Built enterprise-scale automation pipelines and maintained critical data flows for global SAP production environments.</p>
                         <ul>
-                            <li>Developed Python and SQL automation workflows for enterprise systems, reducing manual reporting and validation effort by ~30 hours per week</li>
-                            <li>Supported large-scale production systems across SAP SD, TM, and S/4HANA, resolving P1/P2 incidents via ServiceNow and maintaining high system reliability for global clients</li>
-                            <li>Analyzed and debugged complex workflows (freight, order processing, shipment systems), improving issue resolution speed and operational efficiency</li>
-                            <li>Collaborated with engineering teams on backend debugging (ABAP coordination) and release validation, ensuring stable deployments across development, testing, and production environments</li>
+                            <li>Built enterprise-scale Python and SQL data automation pipelines supporting SAP production environments, reducing manual reporting workloads by ~30 hours per week</li>
+                            <li>Designed and maintained data flows across SAP SD, TM, and S/4HANA systems for global enterprise clients, ensuring data integrity across freight, order, and shipment domains</li>
+                            <li>Diagnosed and resolved critical P1/P2 data-integrity incidents via ServiceNow, maintaining high system reliability across global operations</li>
                         </ul>
                     </div>
                 </div>
@@ -320,7 +373,7 @@
     <!-- Education Section -->
     <section id="education" class="education">
         <div class="container">
-            <h2 class="section-title">Education & Certifications</h2>
+            <h2 class="section-title">Education</h2>
             <div class="education-grid">
                 <div class="education-card">
                     <div class="education-icon">
@@ -341,6 +394,15 @@
                     <p>Graduated May 2020</p>
                     <p>Foundation in engineering principles, electronics, and communications systems</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="education-grid">
                 <div class="education-card">
                     <div class="education-icon">
                         <i class="fas fa-certificate"></i>
@@ -358,35 +420,33 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content" style="text-align: center; padding: 40px 20px;">
-                <div class="contact-info" style="max-width: 700px; margin: 0 auto;">
-                    <h3 style="font-size: 2rem; margin-bottom: 20px;">Let's Connect</h3>
-                    <p style="font-size: 1.1rem; margin-bottom: 40px; color: #666;">I'm always excited to discuss new opportunities in data analytics, machine learning, and AI innovation. Whether you're looking to collaborate on a project or explore career opportunities, feel free to reach out!</p>
+            <h2 class="section-title">Let's Build AI Together</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Ready to Connect?</h3>
+                    <p>I'm passionate about AI innovation, building production-grade ML systems, and exploring the frontier of LLMs and RAG pipelines. Whether you want to collaborate on groundbreaking projects, discuss career opportunities, or just chat about AI — let's connect!</p>
 
-                    <div style="margin: 50px 0;">
-                        <a href="mailto:sriyasriya569@gmail.com" class="btn btn-primary" style="font-size: 1.2rem; padding: 18px 40px; display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; border-radius: 50px; color: white; text-decoration: none; box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4); transition: all 0.3s ease; cursor: pointer;">
-                            <i class="fas fa-envelope" style="font-size: 1.3rem;"></i>
-                            <span>sriyasriya569@gmail.com</span>
-                        </a>
-                    </div>
+                    <a href="mailto:sriyasriya569@gmail.com" class="email-button">
+                        <i class="fas fa-envelope"></i>
+                        <span>sriyasriya569@gmail.com</span>
+                    </a>
 
-                    <div class="contact-details" style="display: flex; justify-content: center; gap: 50px; margin-top: 50px; flex-wrap: wrap;">
-                        <div class="contact-item" style="display: flex; align-items: center; gap: 10px; font-size: 1.1rem;">
-                            <i class="fas fa-phone" style="color: #667eea; font-size: 1.3rem;"></i>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
                             <span>(703) 600-9515</span>
                         </div>
-                        <div class="contact-item" style="display: flex; align-items: center; gap: 10px; font-size: 1.1rem;">
-                            <i class="fas fa-map-marker-alt" style="color: #667eea; font-size: 1.3rem;"></i>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
                             <span>Aldie, Virginia</span>
                         </div>
                     </div>
 
-                    <div class="social-links" style="margin-top: 40px; display: flex; justify-content: center; gap: 20px;">
-                        <a href="https://www.linkedin.com/in/sriyapothula" target="_blank" class="social-link" style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #0077b5, #00a0dc); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; text-decoration: none; box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3); transition: transform 0.3s ease;">
+                    <div class="social-links" style="margin-top: 3rem; display: flex; justify-content: center; gap: 1rem;">
+                        <a href="https://www.linkedin.com/in/sriyapothula" target="_blank" class="social-link" aria-label="LinkedIn">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="https://github.com/sriya19" target="_blank" class="social-link" style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #333, #555); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; text-decoration: none; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: transform 0.3s ease;">
+                        <a href="https://github.com/sriya19" target="_blank" class="social-link" aria-label="GitHub">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
@@ -411,7 +471,47 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Talking Avatar Interface (Text + Audio Chat) -->
+    <div class="talking-avatar-container">
+        <div class="avatar-chat-window">
+            <!-- Header with AI orb -->
+            <div class="avatar-chat-header">
+                <div class="avatar-header-orb" id="avatarOrb">
+                    <span class="orb-ring"></span>
+                    <span class="orb-core"><i class="fas fa-robot"></i></span>
+                    <span class="orb-wave"></span>
+                    <span class="orb-wave"></span>
+                    <span class="orb-wave"></span>
+                </div>
+                <div class="avatar-header-info">
+                    <h2>Sriya AI</h2>
+                    <p><span class="avatar-status-dot"></span> Online — ask me anything</p>
+                </div>
+                <div class="avatar-header-actions">
+                    <button class="avatar-mute-btn" id="avatarMuteBtn" title="Toggle voice">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    <button class="avatar-close-btn" title="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="avatar-messages-area"></div>
+
+            <div class="avatar-suggestions"></div>
+
+            <form class="avatar-input-area">
+                <input type="text" placeholder="Type your question..." autocomplete="off">
+                <button type="submit" class="avatar-send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="talking-avatar.js"></script>
 </body>
 </html>
 <!-- Updated Wed Apr  1 11:50:00 UTC 2026 -->
