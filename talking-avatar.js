@@ -125,8 +125,7 @@
         window.speechSynthesis.onvoiceschanged = pickVoice;
     }
 
-    const avatarDisplay = document.querySelector('.avatar-display');
-    const avatarVideo = document.querySelector('.avatar-image-frame video');
+    const avatarOrb = document.getElementById('avatarOrb');
 
     function speak(text) {
         if (!voiceEnabled || !('speechSynthesis' in window)) return;
@@ -137,33 +136,20 @@
         utter.rate = 1.02;
         utter.pitch = 1.05;
         utter.onstart = function () {
-            if (avatarDisplay) avatarDisplay.classList.add('talking');
-            if (avatarVideo) {
-                avatarVideo.playbackRate = 1.0; // Normal speed when talking
-                avatarVideo.play();
-            }
+            if (avatarOrb) avatarOrb.classList.add('talking');
         };
         utter.onend = function () {
-            if (avatarDisplay) avatarDisplay.classList.remove('talking');
-            if (avatarVideo) {
-                avatarVideo.playbackRate = 0.5; // Slow motion when idle
-            }
+            if (avatarOrb) avatarOrb.classList.remove('talking');
         };
         utter.onerror = function () {
-            if (avatarDisplay) avatarDisplay.classList.remove('talking');
-            if (avatarVideo) {
-                avatarVideo.playbackRate = 0.5;
-            }
+            if (avatarOrb) avatarOrb.classList.remove('talking');
         };
         window.speechSynthesis.speak(utter);
     }
 
     function stopSpeaking() {
         if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-        if (avatarDisplay) avatarDisplay.classList.remove('talking');
-        if (avatarVideo) {
-            avatarVideo.playbackRate = 0.5; // Slow motion when stopped
-        }
+        if (avatarOrb) avatarOrb.classList.remove('talking');
     }
 
     // UI
@@ -253,10 +239,24 @@
     if (launcher) launcher.addEventListener('click', openAvatar);
     if (closeBtn) closeBtn.addEventListener('click', closeAvatar);
 
-    // Connect new hero button to open avatar
+    // Connect hero button to open avatar
     const heroTalkBtn = document.querySelector('.talk-to-ai-btn');
     if (heroTalkBtn) {
         heroTalkBtn.addEventListener('click', openAvatar);
+    }
+
+    // Mute / unmute the voice
+    const muteBtn = document.getElementById('avatarMuteBtn');
+    if (muteBtn) {
+        muteBtn.addEventListener('click', function () {
+            voiceEnabled = !voiceEnabled;
+            muteBtn.innerHTML = voiceEnabled
+                ? '<i class="fas fa-volume-up"></i>'
+                : '<i class="fas fa-volume-mute"></i>';
+            muteBtn.classList.toggle('muted', !voiceEnabled);
+            muteBtn.title = voiceEnabled ? 'Mute voice' : 'Unmute voice';
+            if (!voiceEnabled) stopSpeaking();
+        });
     }
 
     if (formEl) {
@@ -271,9 +271,4 @@
             closeAvatar();
         }
     });
-
-    // Initialize video at slow playback when idle
-    if (avatarVideo) {
-        avatarVideo.playbackRate = 0.5;
-    }
 })();

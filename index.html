@@ -6,7 +6,6 @@
     <title>Sriya Pothula - AI Engineer Portfolio</title>
     <meta name="description" content="Sriya Pothula - AI Engineer specializing in RAG pipelines, LLMs, and scalable AI systems">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="chatbot.css">
     <link rel="stylesheet" href="talking-avatar.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -51,29 +50,17 @@
         <div class="hero-background"></div>
         <div class="hero-content">
             <div class="hero-left">
-                <div class="profile-image-container">
+                <div class="hero-video-wrapper">
                     <video src="sriya-avatar.mp4"
                            autoplay
                            loop
                            playsinline
                            poster="profile.jpg"
-                           class="profile-image"
+                           class="hero-video"
                            id="heroVideo"
                            alt="Sriya Pothula">
                     </video>
-                    <div class="profile-ring"></div>
                 </div>
-
-                <!-- Talk to Sriya AI Button (under video) -->
-                <button class="talk-to-ai-btn">
-                    <div class="talk-btn-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <div class="talk-btn-text">
-                        <span class="talk-btn-title">Talk to Sriya AI</span>
-                        <span class="talk-btn-subtitle">Ask me anything!</span>
-                    </div>
-                </button>
             </div>
 
             <div class="hero-text">
@@ -99,6 +86,17 @@
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>
+
+                <!-- Talk to Sriya AI Button (under social links) -->
+                <button class="talk-to-ai-btn">
+                    <div class="talk-btn-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="talk-btn-text">
+                        <span class="talk-btn-title">Talk to Sriya AI</span>
+                        <span class="talk-btn-subtitle">Ask me anything!</span>
+                    </div>
+                </button>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -473,76 +471,46 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Talking Avatar Launcher -->
-    <div class="avatar-launcher">
-        <div class="avatar-launcher-icon">
-            <img src="chatbot-avatar.png" alt="Talk to Sriya AI">
-        </div>
-        <span>Talk to Sriya AI</span>
-    </div>
-
-    <!-- Talking Avatar Interface (Full Screen) -->
+    <!-- Talking Avatar Interface (Text + Audio Chat) -->
     <div class="talking-avatar-container">
-        <div class="avatar-split">
-            <!-- LEFT: Avatar Video Panel -->
-            <div class="avatar-video-panel">
-                <div class="avatar-bg-particles"></div>
-
-                <button class="avatar-close-btn" title="Close">
-                    <i class="fas fa-times"></i>
-                </button>
-
-                <div class="avatar-status">
-                    <span class="avatar-status-dot"></span>
-                    <span class="avatar-status-text">AI Online</span>
+        <div class="avatar-chat-window">
+            <!-- Header with AI orb -->
+            <div class="avatar-chat-header">
+                <div class="avatar-header-orb" id="avatarOrb">
+                    <span class="orb-ring"></span>
+                    <span class="orb-core"><i class="fas fa-robot"></i></span>
+                    <span class="orb-wave"></span>
+                    <span class="orb-wave"></span>
+                    <span class="orb-wave"></span>
                 </div>
-
-                <div class="avatar-display">
-                    <div class="avatar-glow-ring"></div>
-                    <div class="avatar-image-frame">
-                        <video src="sriya-avatar.mp4"
-                               autoplay
-                               loop
-                               muted
-                               playsinline
-                               poster="chatbot-avatar.png"
-                               alt="Sriya AI">
-                        </video>
-                    </div>
-                    <div class="avatar-soundwave">
-                        <div class="avatar-soundwave-bar"></div>
-                        <div class="avatar-soundwave-bar"></div>
-                        <div class="avatar-soundwave-bar"></div>
-                        <div class="avatar-soundwave-bar"></div>
-                        <div class="avatar-soundwave-bar"></div>
-                        <div class="avatar-soundwave-bar"></div>
-                    </div>
+                <div class="avatar-header-info">
+                    <h2>Sriya AI</h2>
+                    <p><span class="avatar-status-dot"></span> Online — ask me anything</p>
                 </div>
-            </div>
-
-            <!-- RIGHT: Chat Panel -->
-            <div class="avatar-chat-panel">
-                <div class="avatar-chat-header">
-                    <h2>Chat with Sriya AI</h2>
-                    <p>Ask me anything about Sriya's work, skills, and projects</p>
-                </div>
-
-                <div class="avatar-messages-area"></div>
-
-                <div class="avatar-suggestions"></div>
-
-                <form class="avatar-input-area">
-                    <input type="text" placeholder="Type your question..." autocomplete="off">
-                    <button type="submit" class="avatar-send-btn">
-                        <i class="fas fa-paper-plane"></i>
+                <div class="avatar-header-actions">
+                    <button class="avatar-mute-btn" id="avatarMuteBtn" title="Toggle voice">
+                        <i class="fas fa-volume-up"></i>
                     </button>
-                </form>
+                    <button class="avatar-close-btn" title="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
             </div>
+
+            <div class="avatar-messages-area"></div>
+
+            <div class="avatar-suggestions"></div>
+
+            <form class="avatar-input-area">
+                <input type="text" placeholder="Type your question..." autocomplete="off">
+                <button type="submit" class="avatar-send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
         </div>
     </div>
 
     <script src="script.js"></script>
-    <script src="chatbot.js"></script>
     <script src="talking-avatar.js"></script>
 </body>
 </html>
