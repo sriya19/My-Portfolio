@@ -207,6 +207,20 @@ if (matrixCanvas) {
 }
 
 // ============================================
+// Hero video autoplay
+const heroVideo = document.getElementById('heroVideo');
+if (heroVideo) {
+    // Try to play the video
+    heroVideo.play().catch(function(error) {
+        console.log('Video autoplay blocked:', error);
+        // Fallback: play on any user interaction
+        document.addEventListener('click', function playOnClick() {
+            heroVideo.play().catch(e => console.log('Video play failed:', e));
+            document.removeEventListener('click', playOnClick);
+        }, { once: true });
+    });
+}
+
 // Smooth scrolling for navigation links
 // ============================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
