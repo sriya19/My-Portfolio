@@ -342,6 +342,44 @@ body {
     object-position: center;
 }
 
+/* "Click for sound" hint */
+.video-sound-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    background: rgba(10, 14, 39, 0.85);
+    border: 1px solid rgba(0, 212, 255, 0.45);
+    border-radius: 30px;
+    color: #e6f7ff;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 4;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 24px rgba(0, 212, 255, 0.3);
+    animation: hintPulse 2s ease-in-out infinite;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    white-space: nowrap;
+}
+
+.video-sound-hint i {
+    color: var(--neon-blue);
+}
+
+.video-sound-hint.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes hintPulse {
+    0%, 100% { transform: translateX(-50%) translateY(0); box-shadow: 0 6px 24px rgba(0, 212, 255, 0.3); }
+    50% { transform: translateX(-50%) translateY(-4px); box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5); }
+}
+
 /* Blend the video's right edge into the dark background */
 .hero-video-wrapper::after {
     content: '';
