@@ -207,36 +207,21 @@ if (matrixCanvas) {
 }
 
 // ============================================
-// Hero intro video — plays ONCE with sound when the visitor opens the portfolio.
-// Browsers block audio until the user interacts, so we start muted, then unmute
-// and replay from the start on the first interaction (click/scroll/key/touch).
+// Hero intro video — attempt autoplay with sound
 const heroVideo = document.getElementById('heroVideo');
 if (heroVideo) {
-    heroVideo.muted = true;
-    heroVideo.play().catch(function () { /* autoplay may be blocked; ignored */ });
+    heroVideo.volume = 1.0;
+    // Try to play with sound first
+    const playPromise = heroVideo.play();
 
-    const soundHint = document.getElementById('videoSoundHint');
-    let soundStarted = false;
-
-    function playHeroWithSound() {
-        if (soundStarted) return;
-        soundStarted = true;
-
-        heroVideo.muted = false;
-        heroVideo.volume = 1.0;
-        heroVideo.currentTime = 0;       // restart so the full greeting is heard
-        heroVideo.play().catch(function () { /* ignore */ });
-
-        if (soundHint) soundHint.classList.add('hidden');
-        interactionEvents.forEach(function (ev) {
-            document.removeEventListener(ev, playHeroWithSound);
+    if (playPromise !== undefined) {
+        playPromise.catch(function(error) {
+            // If autoplay with sound fails, fall back to muted autoplay
+            console.log('Autoplay with sound blocked, falling back to muted:', error);
+            heroVideo.muted = true;
+            heroVideo.play().catch(function () { /* ignore if this also fails */ });
         });
     }
-
-    const interactionEvents = ['click', 'keydown', 'scroll', 'touchstart'];
-    interactionEvents.forEach(function (ev) {
-        document.addEventListener(ev, playHeroWithSound, { passive: true });
-    });
 }
 
 // Smooth scrolling for navigation links
