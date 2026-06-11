@@ -207,17 +207,35 @@ if (matrixCanvas) {
 }
 
 // ============================================
-// Hero video autoplay
+// Hero intro video — plays ONCE with sound when the visitor opens the portfolio.
+// Browsers block audio until the user interacts, so we start muted, then unmute
+// and replay from the start on the first interaction (click/scroll/key/touch).
 const heroVideo = document.getElementById('heroVideo');
 if (heroVideo) {
-    // Try to play the video
-    heroVideo.play().catch(function(error) {
-        console.log('Video autoplay blocked:', error);
-        // Fallback: play on any user interaction
-        document.addEventListener('click', function playOnClick() {
-            heroVideo.play().catch(e => console.log('Video play failed:', e));
-            document.removeEventListener('click', playOnClick);
-        }, { once: true });
+    heroVideo.muted = true;
+    heroVideo.play().catch(function () { /* autoplay may be blocked; ignored */ });
+
+    const soundHint = document.getElementById('videoSoundHint');
+    let soundStarted = false;
+
+    function playHeroWithSound() {
+        if (soundStarted) return;
+        soundStarted = true;
+
+        heroVideo.muted = false;
+        heroVideo.volume = 1.0;
+        heroVideo.currentTime = 0;       // restart so the full greeting is heard
+        heroVideo.play().catch(function () { /* ignore */ });
+
+        if (soundHint) soundHint.classList.add('hidden');
+        interactionEvents.forEach(function (ev) {
+            document.removeEventListener(ev, playHeroWithSound);
+        });
+    }
+
+    const interactionEvents = ['click', 'keydown', 'scroll', 'touchstart'];
+    interactionEvents.forEach(function (ev) {
+        document.addEventListener(ev, playHeroWithSound, { passive: true });
     });
 }
 
