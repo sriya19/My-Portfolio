@@ -342,6 +342,88 @@ body {
     object-position: center;
 }
 
+/* Prominent "Tap to hear me" sound button overlay */
+.video-sound-btn {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.video-sound-btn.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.sound-btn-icon {
+    position: relative;
+    z-index: 2;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00d4ff, #b537f2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 30px;
+    box-shadow: 0 8px 30px rgba(0, 212, 255, 0.6);
+    animation: soundBtnBob 1.6s ease-in-out infinite;
+}
+
+.sound-btn-ring,
+.sound-btn-ring-2 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 212, 255, 0.7);
+    z-index: 1;
+    animation: soundBtnRipple 2s ease-out infinite;
+}
+
+.sound-btn-ring-2 {
+    animation-delay: 1s;
+}
+
+.sound-btn-label {
+    background: rgba(10, 14, 39, 0.92);
+    border: 1px solid rgba(0, 212, 255, 0.5);
+    border-radius: 30px;
+    padding: 10px 22px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.4);
+    white-space: nowrap;
+}
+
+@keyframes soundBtnBob {
+    0%, 100% { transform: translateY(0); box-shadow: 0 8px 30px rgba(0, 212, 255, 0.6); }
+    50% { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0, 212, 255, 0.85); }
+}
+
+@keyframes soundBtnRipple {
+    0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+    100% { transform: translateX(-50%) scale(2.1); opacity: 0; }
+}
+
 /* Blend the video's right edge into the dark background */
 .hero-video-wrapper::after {
     content: '';

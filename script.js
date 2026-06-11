@@ -207,21 +207,32 @@ if (matrixCanvas) {
 }
 
 // ============================================
-// Hero intro video — attempt autoplay with sound
+// Hero intro video — plays muted automatically, then a prominent button
+// lets the visitor unmute and hear the greeting from the start.
 const heroVideo = document.getElementById('heroVideo');
+const videoSoundBtn = document.getElementById('videoSoundBtn');
 if (heroVideo) {
-    heroVideo.volume = 1.0;
-    // Try to play with sound first
-    const playPromise = heroVideo.play();
+    // Start muted autoplay (always allowed by browsers)
+    heroVideo.muted = true;
+    heroVideo.play().catch(function () { /* ignored */ });
 
-    if (playPromise !== undefined) {
-        playPromise.catch(function(error) {
-            // If autoplay with sound fails, fall back to muted autoplay
-            console.log('Autoplay with sound blocked, falling back to muted:', error);
-            heroVideo.muted = true;
-            heroVideo.play().catch(function () { /* ignore if this also fails */ });
-        });
+    function playWithSound() {
+        heroVideo.muted = false;
+        heroVideo.volume = 1.0;
+        heroVideo.currentTime = 0;   // restart so the full greeting is heard
+        heroVideo.play().catch(function () { /* ignored */ });
+        if (videoSoundBtn) videoSoundBtn.classList.add('hidden');
     }
+
+    // The big visible button
+    if (videoSoundBtn) {
+        videoSoundBtn.addEventListener('click', playWithSound);
+    }
+
+    // Hide the button automatically once the video finishes playing
+    heroVideo.addEventListener('ended', function () {
+        if (videoSoundBtn) videoSoundBtn.classList.add('hidden');
+    });
 }
 
 // Smooth scrolling for navigation links
