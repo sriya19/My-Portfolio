@@ -1032,6 +1032,17 @@ body {
     box-shadow: var(--shadow-neon);
 }
 
+.project-link-demo {
+    border-color: #b537f2;
+    color: #b537f2;
+}
+
+.project-link-demo:hover {
+    background: #b537f2;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(181, 55, 242, 0.6);
+}
+
 .project-content {
     padding: 2rem;
 }
