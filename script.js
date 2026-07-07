@@ -311,51 +311,22 @@ if (backToTop) {
 }
 
 // ============================================
-// Typing effect for hero title with rotating text
+// Typing effect for hero title — types the tagline once, then stays
 // ============================================
 const heroTitle = document.querySelector('.hero-title');
 if (heroTitle) {
-    const phrases = [
-        'Gen AI Engineer | RAG, LLMs & Semantic Search',
-        'Data Business Analyst | Power BI, Snowflake & SQL'
-    ];
-
-    let phraseIndex = 0;
+    const phrase = heroTitle.textContent.trim();
     let charIndex = 0;
-    let isDeleting = false;
-    let isPaused = false;
+    heroTitle.textContent = '';
 
     function typeEffect() {
-        const currentPhrase = phrases[phraseIndex];
-
-        if (isPaused) {
-            setTimeout(() => {
-                isPaused = false;
-                typeEffect();
-            }, 2000);
-            return;
-        }
-
-        if (!isDeleting) {
-            heroTitle.innerHTML = currentPhrase.substring(0, charIndex + 1) + '<span class="typing-cursor">|</span>';
+        if (charIndex < phrase.length) {
+            heroTitle.innerHTML = phrase.substring(0, charIndex + 1) + '<span class="typing-cursor">|</span>';
             charIndex++;
-
-            if (charIndex === currentPhrase.length) {
-                isPaused = true;
-                isDeleting = true;
-            }
+            setTimeout(typeEffect, 60);
         } else {
-            heroTitle.innerHTML = currentPhrase.substring(0, charIndex - 1) + '<span class="typing-cursor">|</span>';
-            charIndex--;
-
-            if (charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-            }
+            heroTitle.textContent = phrase;
         }
-
-        const typingSpeed = isDeleting ? 30 : 60;
-        setTimeout(typeEffect, typingSpeed);
     }
 
     setTimeout(typeEffect, 1000);
